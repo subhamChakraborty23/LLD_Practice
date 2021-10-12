@@ -24,7 +24,7 @@ public:
 private:
 	int id;
 	string name;
-	vector<pair<User, double>> userExpenseSheet;
+	vector<pair<User, double> > userExpenseSheet;
 	double totalExpenseSoFar;
 	int getUniqueId();
 };
@@ -90,7 +90,7 @@ void User::addToUserExpenseSheet(User& user, double value)
 		return;
 
 	this->totalExpenseSoFar += value;
-	for(pair<User, double> &newExpense: userExpenseSheet)
+	for(pair<User, double> &newExpense : userExpenseSheet)
 	{
 		if(newExpense.first == user)
 		{
@@ -220,7 +220,7 @@ bool Splitwise::verifyUsers(User user, vector<User> users)
 	if(find(users.begin(), users.end(), user) == users.end())
 		users.push_back(user);
 
-	for(User usr: users)
+	for(User usr : users)
 		if(userIdMap.find(usr.getId()) == userIdMap.end())
 			return false;
 	return true;

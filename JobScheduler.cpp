@@ -79,7 +79,7 @@ class Scheduler
 public:
 	Scheduler() {}
 	void addJob(Job&);
-	vector<vector<Job>> getSchedulingSequence(SchedulingAlgorithm, int);
+	vector<vector<Job> >getSchedulingSequence(SchedulingAlgorithm, int);
 };
 
 Job::Job(string name, int duration, int priority, int deadline, User user)
@@ -140,9 +140,9 @@ void Scheduler::processThreads(vector<int>& threadCapacity)
 	}
 }
 
-vector<vector<Job>> Scheduler::getSchedulingSequence(SchedulingAlgorithm algorithm, int threads)
+vector< vector<Job> > Scheduler::getSchedulingSequence(SchedulingAlgorithm algorithm, int threads)
 {
-	vector<vector<Job>> result;
+	vector<vector<Job> > result;
 	result.resize(threads);
 	vector<int> threadCapacity(threads, 0);
 	vector<int> totalTimeTaken(threads, 0);
@@ -251,7 +251,7 @@ int main() {
 
 	cout << "************************************ FCFS ***********************************" << endl;
 
-	vector<vector<Job>> res = scheduler.getSchedulingSequence(SchedulingAlgorithm::FCFS, 2);
+	vector<vector<Job> > res = scheduler.getSchedulingSequence(SchedulingAlgorithm::FCFS, 2);
 
     for (size_t i = 0; i< res.size(); ++i)
     {
@@ -280,8 +280,9 @@ int main() {
     for (size_t i = 0; i< res.size(); ++i)
     {
         vector<Job> temp = res[i];
-        for (Job job : temp)
+        for (Job job : temp){
             cout << job.getName().c_str() << " ";
+		}
         cout << endl;
     }
 
