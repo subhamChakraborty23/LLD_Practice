@@ -296,6 +296,7 @@ int main() {
             cout << job.getName().c_str() << " ";
         cout << endl;
     }
+	cout<<"done"<<endl;
 	return 0;
 }
 
